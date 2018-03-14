@@ -1,0 +1,121 @@
+<html>
+	<head>
+		<title>
+			Homework 4
+		</title>
+		<script type = "text/javascript"> 
+			var bold = true;
+			function fetchJSON(url)
+			{
+				if(url.match("^\\s*$"))
+				{
+					alert("Please Input the URL");
+					return;
+				}
+				var xmlHttpRequest = new XMLHttpRequest();
+				xmlHttpRequest.onreadystatechange = function()
+				{
+					if(xmlHttpRequest.readyState == 4 )
+						if(xmlHttpRequest.status == 404)
+							alert("File does NOT Exist!");
+				}
+				try
+				{
+					xmlHttpRequest.open("GET", url, false); 
+					xmlHttpRequest.send();  
+				}
+				catch(e)
+				{
+					alert("File does NOT Exist!");
+					return;
+				}
+				if(xmlHttpRequest.status == 404)
+					return;
+				try
+				{
+					var jsonObject = JSON.parse(xmlHttpRequest.responseText);
+				}
+				catch(e)
+				{
+					alert("Can NOT Parse File!");
+					return;
+				}
+				try
+				{
+					createHTML(jsonObject);
+				}
+				catch(e)
+				{
+					alert("Can NOT Parse File!");
+					return;
+				}
+			}
+			function createHTML(jsonObj)
+			{
+				var keys = new Array();
+				var values = new Array();
+				keys = jsonObj.Mainline.Table.Header.Data;
+				values = jsonObj.Mainline.Table.Row;
+				var htmlText = "<html><head><title>US Airlines Listing</title></head><body>";
+				htmlText += "<table border='2' align='center'>";
+				if(keys != null)
+				{
+					htmlText += "<tr>";
+					for(var i = 0; i < keys.length; i++)
+						htmlText += "<td align='center'><strong>" + keys[i] + "</strong></td>";
+					htmlText += "</tr>";
+				}
+				for(var i = 0; i < values.length; i++)
+				{
+					htmlText += "<tr>";
+					htmlText += "<td width='50px' style='min-width:50px;height:50px;'>" + values[i].Airline + "</td>";
+					htmlText += "<td>" + values[i].IATA + "</td>";
+					htmlText += "<td width='250px' style='min-width:250px;'><ul>";
+					for(var j in values[i].Hubs)
+						if(JSON.stringify(values[i].Hubs[j]) != "{}" && values[i].Hubs[j] != "")
+							for(var k = 0; k < values[i].Hubs[j].length; k++)
+							{
+								htmlText += "<li>";
+								if(bold)
+									htmlText += "<strong>" + values[i].Hubs[j][k]+ "</strong>";
+								else
+									htmlText += values[i].Hubs[j][k];
+								htmlText += "</li>";
+								bold = false;
+							}	
+					bold = true;
+					htmlText += "</ul></td>";
+					htmlText += "<td width='300px' style='min-width:300px;'>" + values[i].Notes + "</td>";
+					htmlText += "<td width='200px' style='min-width:200px;'><a href=" + values[i].HomePage + ">" + values[i].HomePage + "</a></td>";
+					htmlText += "<td width='350px'>";
+					if(values[i].Plane != null && values[i].Plane != "")
+						htmlText += "<img src=" + values[i].Plane + " width='350px' height='150px' />";
+					htmlText += "</td>";
+					htmlText += "</tr>";
+				}
+				htmlText += "</table></body></html>";
+				displayHtml(htmlText);
+			}
+			function displayHtml(htmlText)
+			{
+				var display = window.open("", "", "height=700, width=1500");
+				display.document.write(htmlText);
+				display.document.close();
+			}
+		</script> 
+	</head>
+
+	<body>
+		<div align="center" style="margin-top:100px;">
+			<h1 style="margin-bottom:20px;">
+				Enter URL for Airline List JSON File
+			</h1>
+			<br />
+			<form method="post">
+				<input name="url" id="url" value="airlinelist.json" maxlength="50" size="50" style="margin-bottom:40px;"/>
+				<br />
+				<input type="button" value="Submit Query" onClick="fetchJSON(document.getElementById('url').value)" />
+			</form>
+		</div>
+	</body>
+</html>

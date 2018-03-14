@@ -1,0 +1,35 @@
+<resources>
+    <string name="str_title_main">Stock Market Search</string>
+    <string name="str_query_main">Get Quote</string>
+    <string name="str_clear_main">Clear</string>
+    <string name="str_favorites_main">Favorites</string>
+    <string name="str_autorefresh_main">AutoRefresh</string>
+    <string-array name="arr_sort_method">
+        <item>Sort by</item>
+        <item>Default</item>
+        <item>Symbol</item>
+        <item>Price</item>
+        <item>Change</item>
+    </string-array>
+    <string-array name="arr_sort_order">
+        <item>Ascending</item>
+        <item>Descending</item>
+    </string-array>
+
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+    <string name="tab_text_3">Tab 3</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string-array name="arr_indicators">
+        <item>Price</item>
+        <item>SMA</item>
+        <item>EMA</item>
+        <item>STOCH</item>
+        <item>RSI</item>
+        <item>ADX</item>
+        <item>CCI</item>
+        <item>BBANDS</item>
+        <item>MACD</item>
+    </string-array>
+</resources>

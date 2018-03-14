@@ -1,0 +1,240 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Homework 8</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css" />
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet" />
+    <style>
+body {
+	background-image: url(./img/background.png);
+}
+.col-center-block {
+	float: none;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+.btn-default:focus {
+	background-color: #fff;
+}
+</style>
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/i18n/defaults-*.min.js"></script>
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="well" style="margin-top: 30px">
+        <div class="col-lg-6 col-center-block" align="center">
+          <h3> <b> Stock Market Search </b> </h3>
+        </div>
+        <div class="row">
+          <form class="col-lg-12 form-horizontal col-center-block">
+            <div class="col-lg-3">
+              <label for="symbol" class="control-label">
+                <b> Enter Stock Ticker Symbol:* </b>
+              </label>
+            </div>
+            <div class="col-lg-6">
+              <input type="" id="symbol" name="symbol" class="form-control" placeholder="e.g. AAPL" required autofocus />
+              Please enter a stock ticker symbol.
+            </div>
+            <div class="col-lg-3">
+              <button type="submit" class="btn btn-primary">
+                <span class="glyphicon glyphicon-search" aria-hidden="true"></span> Get Quote
+              </button>
+              <button type="reset" class="btn btn-default">
+                <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Clear
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <hr />
+      <div class="tab-content">
+        <div class="tab-pane fade in active" id="favorite_stocks">
+          <div class="well">
+            <div class="panel panel-default">
+              <div class="panel-heading" style="height: 55px;">
+                <b style="line-height: 35px;">Favorite List</b>
+                <div class="pull-right">
+                  <a href="#stock_details" data-toggle="tab">
+                  <button class="btn btn-default pull-right" style="margin-top: 3px;margin-left: 8px;">
+                    <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+                  </button>
+                  </a>
+                  <button class="btn btn-default pull-right" style="margin-top: 3px;margin-left: 8px;">
+                    <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
+                  </button>
+                  <input data-toggle="toggle" type="checkbox"/>
+                </div>
+              </div>
+              <div class="panel-body">
+                <div class="row" style="margin-left: 50px;margin-bottom: 15px;">
+                  <label class="control-label">
+                    Sort by
+                  </label>
+                  <select class="selectpicker show-tick" data-dropup-auto="false" data-size="6">
+                    <option> Default </option>
+                    <option> Symbol </option>
+                    <option> Price </option>
+                    <option> Change </option>
+                    <option> Change Percent </option>
+                    <option> Volume </option>
+                  </select>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <label class="control-label">
+                    Order
+                  </label>
+                  <select class="selectpicker show-tick" data-dropup-auto="false" >
+                    <option> Ascending </option>
+                    <option> Descending </option>
+                  </select>
+                </div>
+                <table class="table table-hover table-striped">
+                  <tr>
+                    <td><b> Symbol </b></td>
+                    <td><b> Stock Price </b></td>
+                    <td><b> Change (Change Percent) </b></td>
+                    <td><b> Volume </b></td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="stock_details">
+          <div class="well">
+            <div class="panel panel-default">
+              <div class="panel-heading" align="center">
+                <b style="line-height: 30px;"> Stock Details </b> <a href="#favorite_stocks" data-toggle="tab">
+                <button class="btn btn-default pull-left">
+                  <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
+                </button>
+                </a>
+              </div>
+              <div class="panel-body">
+                <ul class="nav nav-pills">
+                  <li class="active" role="presentation">
+                    <a href="#current_stock" data-toggle="tab"> <span class="glyphicon glyphicon-dashboard" aria-hidden="true"></span>&nbsp;Current Stock </a>
+                  </li>
+                  <li role="presentation">
+                    <a href="#historical_charts" data-toggle="tab"> <span class="glyphicon glyphicon-stats" aria-hidden="true"></span>&nbsp;Historical Charts </a>
+                  </li>
+                  <li role="presentation">
+                    <a href="#new_feeds" data-toggle="tab"> <span class="glyphicon glyphicon-link" aria-hidden="true"></span>&nbsp;New Feeds </a>
+                  </li>
+                </ul>
+                <hr />
+                <div class="tab-content">
+                  <div class="tab-pane fade in active" id="current_stock">
+                    <div class="col-lg-6">
+                      <div>
+                        <b style="line-height: 35px;margin-left: 15px;"> Stock Details </b>
+                        <button class="btn btn-default pull-right" style="margin-bottom: 25px;margin-right: 15px;margin-left: 8px;">
+                          <img src="./img/facebook.png" style="width: 20px;height:20px;"/>
+                        </button>
+                        <button class="btn btn-default pull-right">
+                          <span class="glyphicon glyphicon-star-empty" aria-hidden="true" style="font-size: 20px;"/>
+                        </button>
+                      </div>
+                      <table class="table table-hover table-striped">
+                        <tr>
+                          <td><b> Stock Ticker Symbol </b></td>
+                          <td> Stock Ticker Symbol </td>
+                        </tr>
+                        <tr>
+                          <td><b> Last Price </b></td>
+                          <td> Last Price </td>
+                        </tr>
+                        <tr>
+                          <td><b> Change (Change Percent) </b></td>
+                          <td> Change (Change Percent) </td>
+                        </tr>
+                        <tr>
+                          <td><b> Timestamp </b></td>
+                          <td> Timestamp </td>
+                        </tr>
+                        <tr>
+                          <td><b> Open </b></td>
+                          <td> Open </td>
+                        </tr>
+                        <tr>
+                          <td><b> Previous Close </b></td>
+                          <td> Previous Close </td>
+                        </tr>
+                        <tr>
+                          <td><b> Day's Range </b></td>
+                          <td> Day's Range </td>
+                        </tr>
+                        <tr>
+                          <td><b> Volume </b></td>
+                          <td> Volume </td>
+                        </tr>
+                      </table>
+                    </div>
+                    <div class="col-lg-6">
+                      <ul class="nav nav-tabs">
+                        <li role="presentation" class="active">
+                          <a href="#"> Price </a>
+                        </li>
+                        <li role="presentation">
+                          <a href="#"> SMA </a>
+                        </li>
+                        <li role="presentation">
+                          <a href="#"> EMA </a>
+                        </li>
+                        <li role="presentation">
+                          <a href="#"> STOCH </a>
+                        </li>
+                        <li role="presentation">
+                          <a href="#"> RSI </a>
+                        </li>
+                        <li role="presentation">
+                          <a href="#"> ADX </a>
+                        </li>
+                        <li role="presentation">
+                          <a href="#"> CCI </a>
+                        </li>
+                        <li role="presentation">
+                          <a href="#"> BBANDS </a>
+                        </li>
+                        <li role="presentation">
+                          <a href="#"> MACD </a>
+                        </li>
+                      </ul>
+                      <div id="container">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-12 tab-pane fade" id="historical_charts">
+                    <p>
+                      Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.
+                    </p>
+                  </div>
+                  <div class="col-lg-12 tab-pane fade" id="new_feeds">
+                    <div class="well">
+                      <div>
+                        <a href="http://www.baidu.com">百度一哈</a>
+                      </div>
+                      <div>
+                        <b> Author: </b>
+                      </div>
+                      <div>
+                        <b> Date: </b>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

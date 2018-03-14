@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/color_white"
+    tools:context="com.usc.zd.stock.feature.MainActivity">
+
+    <TextView
+        android:id="@+id/favorite_symbol"
+        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:layout_weight="3"
+        android:textSize="17sp"
+        android:textColor="@color/color_black"/>
+
+    <TextView
+        android:id="@+id/favorite_price"
+        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:layout_weight="3"
+        android:textSize="17sp"
+        android:textColor="@color/color_black"/>
+
+    <TextView
+        android:id="@+id/favorite_change"
+        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:layout_weight="4"
+        android:textSize="17sp"
+        android:textColor="@color/color_black"/>
+
+</LinearLayout>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context="com.usc.zd.stock.feature.MainActivity">
+
+    <TextView
+        android:id="@+id/subtitle_stock_details_row"
+        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:layout_weight="4"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        android:paddingTop="10sp"
+        android:paddingBottom="10sp"
+        android:textColor="@color/color_black"/>
+
+    <TextView
+        android:id="@+id/content_stock_details_row"
+        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:layout_weight="6"
+        android:textSize="17sp"
+        android:paddingTop="10sp"
+        android:paddingBottom="10sp"
+        android:textColor="@color/color_black"/>
+
+</LinearLayout>

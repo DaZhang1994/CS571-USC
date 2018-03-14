@@ -1,0 +1,97 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Stock Query</title>
+    <style type="text/css">
+		#source {
+			color: blue !important;
+			text-decoration: none;
+		}
+		#source: hover {
+			color: black !important;
+			text-decoration: none;
+		}
+	</style>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="file:///android_asset/js/highcharts.js"></script>
+    <script src="file:///android_asset/js/exporting.js"></script>
+    <script type="text/javascript">
+		function displayChart()
+		{
+			var recentStockInfo = JSON.parse(window.parameter.getRecentStockInfoStr());
+			var recentPrice = [];
+			var recentVolume = [];
+			var recentDate = [];
+			for(var i = 0; i < recentStockInfo.length; i++){
+				recentPrice.push(recentStockInfo[i]['price']);
+				recentVolume.push(recentStockInfo[i]['volume']);
+				recentDate.push(recentStockInfo[i]['date']);
+			}
+			var config = 	{
+				chart : {
+					zoomType: 'x',
+					height : 350
+				},
+				title : {
+					text : window.parameter.getSymbol() + ' Stock Price and Volume'
+				},
+				subtitle : {
+					useHTML : true,
+					text : '<a id="source" href="https://www.alphavantage.co/">Source: Alpha Vantage</a>'
+				},
+				series : [
+					{
+						yAxis: 0,
+						type : 'area',
+						name : 'Price',
+	  				    data : recentPrice
+					},
+					{
+						yAxis: 1,
+						type : 'column',
+						name : 'Volume',
+						data : recentVolume
+					}
+				],
+				plotOptions: {
+					series: {
+						stickyTracking: false
+					},
+					turboThreshold:0
+				},
+				xAxis : {
+					categories : recentDate,
+					labels : {
+						step : 10,
+						rotation : -45
+					}
+				},
+				yAxis : [
+					{
+						title : {
+							text : 'Stock Price'
+						}
+					},
+					{
+						title : {
+							text : 'Volume'
+						},
+						opposite : true
+					}
+				],
+				colors : [
+					'#0000FF',
+					'#FF0000'
+				]
+			};
+			new Highcharts.chart('container', config);
+	</script>
+  </head>
+  <body>
+    <div id="container" align="center">
+    </div>
+    <script type="text/javascript">
+      displayChart();
+    </script>
+  </body>
+</html>

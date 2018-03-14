@@ -1,0 +1,142 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/color_white"
+    tools:context="com.usc.zd.stock.feature.StockDetailsActivity$PlaceholderFragment">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp">
+
+            <TextView
+                android:id="@+id/stock_details_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="30sp"
+                android:text="Stock Details"
+                android:textColor="@color/color_black"
+                android:layout_marginBottom="20dp"/>
+
+            <ImageView
+                android:id="@+id/facebook_stock"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:scaleType="fitXY"
+                android:layout_marginLeft="30dp"
+                android:src="@mipmap/facebook" />
+
+            <ImageView
+                android:id="@+id/favorites_stock"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:scaleType="fitXY"
+                android:layout_marginLeft="30dp"
+                android:src="@mipmap/empty_star"/>
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="360dp">
+
+            <ListView
+                android:id="@+id/details_stock"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:dividerHeight="1dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:visibility="visible"/>
+
+            <ProgressBar
+                android:id="@+id/progress_bar_stock"
+                style="?android:attr/progressBarStyleLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:visibility="invisible" />
+
+            <TextView
+                android:id="@+id/error_details_stock"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="Failed to load data."
+                android:visibility="invisible"/>
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp">
+
+            <TextView
+                android:id="@+id/indicators_stock"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="25sp"
+                android:text="Indicators"
+                android:textColor="@color/color_black"
+                android:textStyle="bold" />
+
+            <Spinner
+                android:id="@+id/indicators_selector_stock"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:entries="@array/arr_indicators" />
+
+            <TextView
+                android:id="@+id/change_stock"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="22sp"
+                android:text="Change"
+                android:textColor="@color/color_black" />
+
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/chart_frame"
+            android:layout_width="match_parent"
+            android:layout_height="550dp">
+            <WebView
+                android:id="@+id/indicator_chart_stock"
+                android:layout_marginTop="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:visibility="visible">
+            </WebView>
+
+            <ProgressBar
+                android:id="@+id/progress_bar_chart"
+                style="?android:attr/progressBarStyleLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:visibility="invisible" />
+
+            <TextView
+                android:id="@+id/error_indicator_chart_stock"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="Failed to load data."
+                android:visibility="invisible"/>
+        </FrameLayout>
+    </LinearLayout>
+
+</ScrollView>

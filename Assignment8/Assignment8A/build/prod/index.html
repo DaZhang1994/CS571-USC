@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>
+            MyApp
+        </title>
+        <base href="/stock/src/assets">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <style type="text/css">
+				body 
+				{
+					background-image: url(assets/img/background.png);
+				}
+				input::placeholder
+				{
+  				color: red;
+				}
+				#source
+				{
+					color: blue !important;
+					text-decoration : none;
+				}
+				#source:hover
+				{
+					color: black !important;
+					text-decoration : none;
+				} 
+				</style>
+    </head>
+    <body>
+        <app-root></app-root>
+        <script type="application/javascript">
+					window.fbAsyncInit = function() {
+						FB.init({
+							appId            : '{dazhang1994@gmail.com}',
+							autoLogAppEvents : true,
+							xfbml            : true,
+							version          : 'v2.11'
+						});
+						FB.AppEvents.logPageView();
+					};
+
+					(function(d, s, id){
+						 var js, fjs = d.getElementsByTagName(s)[0];
+						 if (d.getElementById(id)) {return;}
+						 js = d.createElement(s); js.id = id;
+						 js.src = "//connect.facebook.net/en_US/sdk.js";
+						 fjs.parentNode.insertBefore(js, fjs);
+					 }(document, 'script', 'facebook-jssdk'));
+				</script>
+    <script type="text/javascript" src="inline.bundle.js"></script><script type="text/javascript" src="polyfills.bundle.js"></script><script type="text/javascript" src="scripts.bundle.js"></script><script type="text/javascript" src="styles.bundle.js"></script><script type="text/javascript" src="vendor.bundle.js"></script><script type="text/javascript" src="main.bundle.js"></script></body>
+</html>

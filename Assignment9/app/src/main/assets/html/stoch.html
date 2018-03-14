@@ -1,0 +1,85 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Stock Query</title>
+  <style type="text/css">
+		#source {
+			color: blue !important;
+			text-decoration: none;
+		}
+		#source: hover {
+			color: black !important;
+			text-decoration: none;
+		}
+  </style>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="file:///android_asset/js/highcharts.js"></script>
+  <script src="file:///android_asset/js/exporting.js"></script>
+  <script type="text/javascript">
+		function displayChart()
+		{
+			stochArr = JSON.parse(window.parameter.getStochStr());
+			var slowK = [];
+			var slowD = [];
+			var date = [];
+			for(var i = 0; i < stochArr.length; i++){
+				slowK.push(stochArr[i]['slowK']);
+				slowD.push(stochArr[i]['slowD']);
+				date.push(stochArr[i]['date']);
+			}
+			var config = {
+		        			chart : {  zoomType: 'x',
+																												 height : 350
+																											},
+																							title : { text : 'Stochastic (STOCH)' },
+																							subtitle :
+																													{
+																														useHTML : true,
+																														text : '<a id="source" href="https://www.alphavantage.co/">' +
+																																			 'Source: Alpha Vantage</a>'
+																													},
+																							series: 	[
+																													{
+																														name : window.parameter.getSymbol() + ' STOCH_SlowK',
+																														data : slowK
+																													},
+																													{
+																														name : window.parameter.getSymbol() + ' STOCH_SlowD',
+																														data : slowD
+																													}
+																												],
+																							plotOptions: {
+																															 series:
+																															 {
+																																	 stickyTracking: false
+																															 },
+																															 turboThreshold:0
+																													 },
+																							xAxis :
+																											{
+																												categories : date,
+																												labels :
+																												{
+																													step : 10,
+																													rotation : -45
+																												}
+																											},
+																							yAxis : [
+																												{
+																													title :
+																													{
+																														text : 'STOCH'
+																													}
+																												}]
+			};
+			new Highcharts.chart('container', config);
+	</script>
+</head>
+<body>
+<div id="container" align="center">
+</div>
+<script type="text/javascript">
+      displayChart();
+    </script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Stock Query</title>
+  <style type="text/css">
+		#source {
+			color: blue !important;
+			text-decoration: none;
+		}
+		#source: hover {
+			color: black !important;
+			text-decoration: none;
+		}
+  </style>
+  <script src="file:///android_asset/js/highstock.js"></script>
+  <script src="file:///android_asset/js/exporting.js"></script>
+  <script type="text/javascript">
+
+		function displayChart()
+		{
+			var historyArr = JSON.parse(window.parameter.getAllStockInfoStr());
+			var history = [];
+			for(var i = 0; i < historyArr.length; i++){
+				history.push(new Array(Number(new Date(historyArr[i]['date'])),
+				                       Number(historyArr[i]['price'])));
+			}
+			new Highcharts.stockChart('container',
+			{
+		        rangeSelector: {
+		            selected: 1
+				},
+				title: {
+				      text : window.parameter.getSymbol() +' Stock Value'
+				},
+				tooltip: {
+				    valueDecimals: 2,
+				    split:false
+                },
+				series: [
+				    {
+                        name : window.parameter.getSymbol(),
+                        type: 'area',
+                        data : history,
+                        turboThreshold: 0
+				    }
+				]
+			});
+		}
+	</script>
+</head>
+<body>
+<div id="container" align="center">
+</div>
+<script type="text/javascript">
+      displayChart();
+    </script>
+</body>
+</html>
